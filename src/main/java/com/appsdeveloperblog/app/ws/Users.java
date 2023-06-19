@@ -3,17 +3,17 @@ package com.appsdeveloperblog.app.ws;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users")                  //dat ten trong db
 public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username")
+    // @Column(name = "username")                          //https://axon.udemy.com/course/quarkus-accessing-relational-databases-with-quarkus/learn/lecture/27225788#overview
     private String username;
 
-    @Column(name = "password")
+    // @Column(name = "password")
     private String password;
 
     public Long getId() {

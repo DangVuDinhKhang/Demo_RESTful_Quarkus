@@ -29,7 +29,7 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createUser(Users user) {
-        userRepository.persist(user);
+        userRepository.create(user);
         return Response.status(Response.Status.CREATED).entity(user).build();
     }
 }
