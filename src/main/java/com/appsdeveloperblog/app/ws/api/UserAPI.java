@@ -1,6 +1,5 @@
-package com.appsdeveloperblog.app.ws;
+package com.appsdeveloperblog.app.ws.api;
 
-import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -12,16 +11,20 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Path("/users")
-public class UserResource {
+import com.appsdeveloperblog.app.ws.model.Users;
+import com.appsdeveloperblog.app.ws.service.UserService;
+import com.appsdeveloperblog.app.ws.service.UserServiceImpl;
 
-    @Inject
-    UserRepository userRepository;
+@Path("/users")
+public class UserAPI {
+
+    UserService userService = new UserServiceImpl();
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Users> getUsers() {
-        return userRepository.listAll();
+        return userService.getAllUsers();
     }
 
     @Transactional
@@ -29,7 +32,7 @@ public class UserResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createUser(Users user) {
-        userRepository.create(user);
+        userService.createUser(user);
         return Response.status(Response.Status.CREATED).entity(user).build();
     }
 }

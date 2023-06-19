@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.app.ws;
+package com.appsdeveloperblog.app.ws.model;
 
 import jakarta.persistence.*;
 
@@ -10,10 +10,10 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @Column(name = "username")                          //https://axon.udemy.com/course/quarkus-accessing-relational-databases-with-quarkus/learn/lecture/27225788#overview
+    @Column(name = "username")                          //https://axon.udemy.com/course/quarkus-accessing-relational-databases-with-quarkus/learn/lecture/27225788#overview
     private String username;
 
-    // @Column(name = "password")
+    @Column(name = "password")
     private String password;
 
     public Long getId() {
